@@ -32,7 +32,9 @@ $allEvents = $eventManager->getEventCountPerFolder();
 			<aside>
 				<!-- TITRE MENU + OPTION TOUT MARQUER COMME LU -->
 				<h3 class="left">Flux</h3> <button style="margin: 20px 10px;" onclick="if(confirm('Tout marquer comme lu pour tous les flux?'))window.location='action.php?action=readAll'">Tout marquer comme lu</button>
-				
+
+				<button style="margin: 20px 10px;" onclick="if(confirm('Refresh all?'))window.location='action.php?action=synchronize'">Refresh all</button>
+								
 				<ul class="clear">
 					<?php 
 						//Pour chaques dossier
