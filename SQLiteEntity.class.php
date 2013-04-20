@@ -3,8 +3,8 @@
 /*
 	@nom: SQLiteEntity
 	@auteur: Idleman (idleman@idleman.fr)
-	@description: Classe parent de tous les modèles (classe entitées) liées a la base de donnée,
-	 cette classe est configuré pour agir avec une base SQLite, mais il est possible de redefinir ses codes SQL pour l'adapter à un autre SGBD sans affecter 
+	@description: Classe parent de tous les modï¿½les (classe entitï¿½es) liï¿½es a la base de donnï¿½e,
+	 cette classe est configurï¿½ pour agir avec une base SQLite, mais il est possible de redefinir ses codes SQL pour l'adapter ï¿½ un autre SGBD sans affecter 
 	 le reste du code du projet.
 
 */
@@ -20,6 +20,7 @@ class SQLiteEntity extends SQLite3
 
 	function __construct(){
 		$this->open('database.db');
+		$this->exec('PRAGMA journal_mode = WAL');
 	}
 
 	function __destruct(){
@@ -65,7 +66,7 @@ class SQLiteEntity extends SQLite3
 
 
 	/**
-	* Methode de creation de l'entité
+	* Methode de creation de l'entitï¿½
 	* @author Valentin CARRUESCO
 	* @category manipulation SQL
 	* @param <String> $debug='false' active le debug mode (0 ou 1)
@@ -117,7 +118,7 @@ class SQLiteEntity extends SQLite3
 	}
 
 	/**
-	* Methode d'insertion ou de modifications d'elements de l'entité
+	* Methode d'insertion ou de modifications d'elements de l'entitï¿½
 	* @author Valentin CARRUESCO
 	* @category manipulation SQL
 	* @param  Aucun
@@ -164,7 +165,7 @@ class SQLiteEntity extends SQLite3
 	}
 
 	/**
-	* Méthode de modification d'éléments de l'entité
+	* Mï¿½thode de modification d'ï¿½lï¿½ments de l'entitï¿½
 	* @author Valentin CARRUESCO
 	* @category manipulation SQL
 	* @param <Array> $colonnes=>$valeurs
@@ -195,7 +196,7 @@ class SQLiteEntity extends SQLite3
 	}
 
 	/**
-	* Méthode de selection de tous les elements de l'entité
+	* Mï¿½thode de selection de tous les elements de l'entitï¿½
 	* @author Valentin CARRUESCO
 	* @category manipulation SQL
 	* @param <String> $ordre=null
@@ -210,7 +211,7 @@ class SQLiteEntity extends SQLite3
 
 
 	/**
-	* Méthode de selection multiple d'elements de l'entité
+	* Mï¿½thode de selection multiple d'elements de l'entitï¿½
 	* @author Valentin CARRUESCO
 	* @category manipulation SQL
 	* @param <Array> $colonnes (WHERE)
@@ -262,14 +263,14 @@ class SQLiteEntity extends SQLite3
 	}
 
 	/**
-	* Méthode de selection unique d'élements de l'entité
+	* Mï¿½thode de selection unique d'ï¿½lements de l'entitï¿½
 	* @author Valentin CARRUESCO
 	* @category manipulation SQL
 	* @param <Array> $colonnes (WHERE)
 	* @param <Array> $valeurs (WHERE)
 	* @param <String> $operation="=" definis le type d'operateur pour la requete select
 	* @param <String> $debug='false' active le debug mode (0 ou 1)
-	* @return <Entity> $Entity ou false si aucun objet n'est trouvé en base
+	* @return <Entity> $Entity ou false si aucun objet n'est trouvï¿½ en base
 	*/
 	public function load($columns,$operation='=',$debug='false'){
 		eval('$objects = $this->loadAll($columns,null,\'1\',\''.$operation.'\',\''.$debug.'\');');
@@ -278,25 +279,25 @@ class SQLiteEntity extends SQLite3
 	}
 
 	/**
-	* Méthode de selection unique d'élements de l'entité
+	* Mï¿½thode de selection unique d'ï¿½lements de l'entitï¿½
 	* @author Valentin CARRUESCO
 	* @category manipulation SQL
 	* @param <Array> $colonnes (WHERE)
 	* @param <Array> $valeurs (WHERE)
 	* @param <String> $operation="=" definis le type d'operateur pour la requete select
 	* @param <String> $debug='false' active le debug mode (0 ou 1)
-	* @return <Entity> $Entity ou false si aucun objet n'est trouvé en base
+	* @return <Entity> $Entity ou false si aucun objet n'est trouvï¿½ en base
 	*/
 	public function getById($id,$operation='=',$debug='false'){
 		return $this->load(array('id'=>$id),$operation,$debug);
 	}
 
 	/**
-	* Methode de comptage des éléments de l'entité
+	* Methode de comptage des ï¿½lï¿½ments de l'entitï¿½
 	* @author Valentin CARRUESCO
 	* @category manipulation SQL
 	* @param <String> $debug='false' active le debug mode (0 ou 1)
-	* @return<Integer> nombre de ligne dans l'entité'
+	* @return<Integer> nombre de ligne dans l'entitï¿½'
 	*/
 	public function rowCount($columns=null)
 	{
@@ -317,7 +318,7 @@ class SQLiteEntity extends SQLite3
 	}	
 	
 	/**
-	* Méthode de supression d'elements de l'entité
+	* Mï¿½thode de supression d'elements de l'entitï¿½
 	* @author Valentin CARRUESCO
 	* @category manipulation SQL
 	* @param <Array> $colonnes (WHERE)
@@ -348,7 +349,7 @@ class SQLiteEntity extends SQLite3
 
 	// ACCESSEURS
 		/**
-	* Méthode de récuperation de l'attribut debug de l'entité
+	* Mï¿½thode de rï¿½cuperation de l'attribut debug de l'entitï¿½
 	* @author Valentin CARRUESCO
 	* @category Accesseur
 	* @param Aucun
@@ -360,7 +361,7 @@ class SQLiteEntity extends SQLite3
 	}
 	
 	/**
-	* Méthode de définition de l'attribut debug de l'entité
+	* Mï¿½thode de dï¿½finition de l'attribut debug de l'entitï¿½
 	* @author Valentin CARRUESCO
 	* @category Accesseur
 	* @param <boolean> $debug 
