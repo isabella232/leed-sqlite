@@ -1,3 +1,11 @@
+# protect database.db from direct download
+# take care /etc/apache2/sites-available/default has "AllowOverride ALL"
+
+<Files database.db>
+ order allow,deny
+ deny from all
+</Files>
+
 # ----------------------------------------------------------------------
 # Better website experience for IE users
 # ----------------------------------------------------------------------
